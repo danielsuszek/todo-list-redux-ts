@@ -1,4 +1,5 @@
-export const GET_LISTS = 'GET_LISTS'
+import * as listActionConstants from "./constants/listActionContstants"
+
 
 type ID = string;
 
@@ -21,3 +22,11 @@ export interface Lists {
 export interface ListState {
   lists: Lists
 }
+
+// Actions
+interface AddListAction {
+  type: typeof listActionConstants.ADD_LIST,
+  payload: List  
+}
+
+export type ListsAction = AddListAction
