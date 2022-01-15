@@ -1,14 +1,39 @@
 import * as actionTypes from '../constants/listActionContstants'
-import { ListsAction } from './../type';
-import { ListState } from '../type'
+
+import { ListsAction, ListState, Lists } from '../type'
 
 const initialState: ListState = {
   lists: {}
 }
 
+// Helper functions
+const getListsFromLS = (): Lists => {
+  if(localStorage.getItem('task_list')) {
+    return JSON.parse(localStorage.getItem('task_list') || '{}');
+  }
+
+  return {};
+}
+
+const saveListsToLS = (lists: Lists) => {
+  localStorage.setItem('task_list', JSON.stringify(lists));
+}
+
 export const listReducer = (state = initialState, action: ListsAction): ListState => {
+  const listsFromLS = getListsFromLS();
   switch(action.type) {
+    case actionTypes.ADD_LIST:
+      const clonedListsFromLS = {...listsFromLS};
+      clonedListsFromLS[action.payload.id] = action.payload;
+      saveListsToLS(clonedListsFromLS);
+
+      return {
+        ...state,
+        lists: clonedListsFromLS
+      }
     default:
       return state
   }
 }
+
+
