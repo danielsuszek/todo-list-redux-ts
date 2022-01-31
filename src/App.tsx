@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './app.sass';
 import CreateNewList from './components/CreateNewList'
 import Lists from './components/Lists';
 
