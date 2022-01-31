@@ -31,6 +31,11 @@ export const listReducer = (state = initialState, action: ListsAction): ListStat
         ...state,
         lists: clonedListsFromLS
       }
+    case actionTypes.GET_LISTS:
+      return {
+        ...state,
+        lists: listsFromLS
+      }
     default:
       return state
   }

@@ -19,14 +19,21 @@ export interface Lists {
   [id: string]: List
 }
 
-export interface ListState {
-  lists: Lists
-}
-
-// Actions
+// actions
 interface AddListAction {
   type: typeof listActionConstants.ADD_LIST,
   payload: List  
 }
 
-export type ListsAction = AddListAction
+interface GetListAction {
+  type: typeof listActionConstants.GET_LISTS
+}
+
+export type ListsAction = AddListAction | GetListAction
+
+// states
+export interface ListState {
+  lists: Lists 
+}
+
+

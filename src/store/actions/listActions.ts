@@ -8,3 +8,9 @@ export const addList = (list: List): ListsAction => {
     payload: list
   }
 }
+
+export const getLists = (): ListsAction => {
+  return {
+    type: listTypes.GET_LISTS
+  }
+}
