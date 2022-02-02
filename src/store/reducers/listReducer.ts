@@ -3,7 +3,8 @@ import * as actionTypes from '../constants/listActionContstants'
 import { ListsAction, ListState, Lists } from '../type'
 
 const initialState: ListState = {
-  lists: {}
+  lists: {},
+  listIdToDelete: ''
 }
 
 // Helper functions
@@ -35,6 +36,11 @@ export const listReducer = (state = initialState, action: ListsAction): ListStat
       return {
         ...state,
         lists: listsFromLS
+      }
+    case actionTypes.SET_LIST_ID_TO_DELETE:
+      return {
+        ...state,
+        listIdToDelete: action.payload
       }
     default:
       return state
