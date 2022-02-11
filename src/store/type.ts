@@ -1,6 +1,5 @@
 import * as listActionConstants from "./constants/listActionContstants"
 
-
 export type ID = string;
 
 export interface Task {
@@ -34,12 +33,18 @@ interface SetListIdToDeleteAction {
   payload: ID
 }
 
-export type ListsAction = AddListAction | GetListAction | SetListIdToDeleteAction
+interface GetListByIdAction {
+  type: typeof listActionConstants.GET_LIST_BY_ID
+  payload: ID
+}
+
+export type ListsAction = AddListAction | GetListAction | SetListIdToDeleteAction | GetListByIdAction
 
 // states
 export interface ListState {
   lists: Lists,
-  listIdToDelete: ID
+  listIdToDelete: ID,
+  listById: List | null
 }
 
 

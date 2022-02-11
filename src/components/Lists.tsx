@@ -9,7 +9,7 @@ const Lists: FC = () => {
   const dispatch = useDispatch()
   const lists = useSelector((state: RootState) => state.list.lists)
 
-  console.log(lists);
+  // console.log(lists);
   const setListIdToDeleteHandler = (id: ID) => {
     dispatch(setListIdToDelete(id))
   }

@@ -17,7 +17,7 @@ function App() {
       <Header />
       <CreateNewList />
       <Lists />
-      <DeleteListModal listId={listIdToDelete} />
+      {listIdToDelete && <DeleteListModal listId={listIdToDelete} />}
     </div>
   );
 }
