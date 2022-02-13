@@ -24,7 +24,7 @@ interface AddListAction {
   payload: List  
 }
 
-interface GetListAction {
+interface GetListsAction {
   type: typeof listActionConstants.GET_LISTS
 }
 
@@ -38,7 +38,7 @@ interface GetListByIdAction {
   payload: ID
 }
 
-export type ListsAction = AddListAction | GetListAction | SetListIdToDeleteAction | GetListByIdAction
+export type ListsAction = AddListAction | GetListsAction | SetListIdToDeleteAction | GetListByIdAction
 
 // states
 export interface ListState {
