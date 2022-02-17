@@ -38,7 +38,12 @@ interface GetListByIdAction {
   payload: ID
 }
 
-export type ListsAction = AddListAction | GetListsAction | SetListIdToDeleteAction | GetListByIdAction
+interface DeleteListAction {
+  type: typeof listActionConstants.DELETE_LIST
+  payload: ID
+}
+
+export type ListsAction = AddListAction | GetListsAction | SetListIdToDeleteAction | GetListByIdAction | DeleteListAction
 
 // states
 export interface ListState {

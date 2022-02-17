@@ -28,3 +28,10 @@ export const getListById = (id: ID): ListsAction => {
     payload: id
   }
 }
+
+export const deleteList = (id: ID): ListsAction => {
+  return {
+    type: listTypes.DELETE_LIST,
+    payload: id
+  }
+}

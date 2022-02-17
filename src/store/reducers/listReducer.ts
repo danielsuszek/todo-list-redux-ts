@@ -49,6 +49,16 @@ export const listReducer = (state = initialState, action: ListsAction): ListStat
         ...state,
         listById: list
       }
+    case actionTypes.DELETE_LIST:
+      const clonedListsFromLS2 = getListsFromLS()
+      delete clonedListsFromLS2[action.payload]
+      saveListsToLS(clonedListsFromLS2)
+      return {
+        ...state,
+        lists: clonedListsFromLS2,
+        listIdToDelete: '',
+        listById: null
+      }
     default:
       return state
   }
