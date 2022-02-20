@@ -5,7 +5,8 @@ import { ListsAction, ListState, Lists } from '../type'
 const initialState: ListState = {
   lists: {},
   listIdToDelete: '',
-  listById: null
+  listById: null,
+  listToEdit: null
 }
 
 // Helper functions
@@ -59,6 +60,13 @@ export const listReducer = (state = initialState, action: ListsAction): ListStat
         listIdToDelete: '',
         listById: null
       }
+    case actionTypes.SET_LIST_TO_EDIT: {
+      const listToEdit = listsFromLS[action.payload]
+      return {
+        ...state,
+        listToEdit
+      }
+    }
     default:
       return state
   }

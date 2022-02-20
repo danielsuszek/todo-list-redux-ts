@@ -43,13 +43,19 @@ interface DeleteListAction {
   payload: ID
 }
 
-export type ListsAction = AddListAction | GetListsAction | SetListIdToDeleteAction | GetListByIdAction | DeleteListAction
+interface SetListToEditAction {
+  type: typeof listActionConstants.SET_LIST_TO_EDIT,
+  payload: ID
+}
+
+export type ListsAction = AddListAction | GetListsAction | SetListIdToDeleteAction | GetListByIdAction | DeleteListAction | SetListToEditAction
 
 // states
 export interface ListState {
   lists: Lists,
   listIdToDelete: ID,
-  listById: List | null
+  listById: List | null,
+  listToEdit: List | null
 }
 
 

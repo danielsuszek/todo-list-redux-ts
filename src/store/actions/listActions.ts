@@ -35,3 +35,10 @@ export const deleteList = (id: ID): ListsAction => {
     payload: id
   }
 }
+
+export const setListToEdit = (id: ID): ListsAction => {
+  return {
+    type: listTypes.SET_LIST_TO_EDIT,
+    payload: id
+  }
+}
