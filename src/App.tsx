@@ -5,7 +5,9 @@ import CreateNewList from './components/CreateNewList'
 import DeleteListModal from './components/DeleteListModal';
 import EditListModal from './components/EditListModal'
 import Header from './components/Header';
-import Lists from './components/Lists';
+import MainContent from './components/MainContent';
+import Navbar from './components/Navbar';
+
 import { RootState } from './store/store';
 
 const App: FC = () => {
@@ -15,8 +17,11 @@ const App: FC = () => {
   return (
     <div className="App">
       <Header />
-      <CreateNewList />
-      <Lists />
+      <div className="container">
+        <Navbar />
+        <MainContent />
+      </div>
+
       {listIdToDelete && <DeleteListModal listId={listIdToDelete} />}
       {listToEdit && <EditListModal listToEdit={listToEdit} />}
     </div>

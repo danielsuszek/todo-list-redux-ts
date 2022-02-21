@@ -43,12 +43,19 @@ export const setListToEdit = (id: ID): ListsAction => {
   }
 }
 
-export const updateListAction = (id: ID, name: string): ListsAction => {
+export const updateList = (id: ID, name: string): ListsAction => {
   return {
     type: listTypes.UPDATE_LIST,
     payload: {
       id,
       name
     }
+  }
+}
+
+export const setSelectedList = (id: ID): ListsAction => {
+  return {
+    type: listTypes.SELECTED_LIST,
+    payload: id
   }
 }

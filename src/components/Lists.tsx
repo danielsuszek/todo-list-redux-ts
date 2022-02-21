@@ -1,6 +1,6 @@
 import { useEffect, FC } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getLists, setListIdToDelete, setListToEdit } from '../store/actions'
+import { getLists, setListIdToDelete, setListToEdit, setSelectedList } from '../store/actions'
 import { RootState } from '../store/store'
 import { ID, List } from '../store/type'
 import './lists.sass'
@@ -18,6 +18,10 @@ const Lists: FC = () => {
     dispatch(setListToEdit(id))
   }
   
+  const selectListHandler = (id: ID) => {
+    dispatch(setSelectedList(id))
+  }
+  
   useEffect(() => {
     dispatch(getLists())
   }, [dispatch])
@@ -29,7 +33,10 @@ const Lists: FC = () => {
         (
           Object.values(lists).map((list: List) => {
             return <div key={list.id}>
-              <p>{list.name}
+              <p 
+                className="lists__list"
+                onClick={() => selectListHandler(list.id)}
+              >{list.name}
                 <span onClick={() => setListIdToDeleteHandler(list.id)}>
                   <i title="Kasuj" className="fas fa-minus-circle"></i>
                 </span>

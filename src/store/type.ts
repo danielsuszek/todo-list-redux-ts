@@ -56,14 +56,20 @@ interface UpdateList {
   }
 }
 
-export type ListsAction = AddListAction | GetListsAction | SetListIdToDeleteAction | GetListByIdAction | DeleteListAction | SetListToEditAction | UpdateList
+interface SetSelectedListAction {
+  type: typeof listActionConstants.SELECTED_LIST,
+  payload: ID
+}
+
+export type ListsAction = AddListAction | GetListsAction | SetListIdToDeleteAction | GetListByIdAction | DeleteListAction | SetListToEditAction | UpdateList | SetSelectedListAction
 
 // states
 export interface ListState {
   lists: Lists,
   listIdToDelete: ID,
   listById: List | null,
-  listToEdit: List | null
+  listToEdit: List | null,
+  selectedList: List | null
 }
 
 

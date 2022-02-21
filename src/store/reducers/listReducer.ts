@@ -6,7 +6,8 @@ const initialState: ListState = {
   lists: {},
   listIdToDelete: '',
   listById: null,
-  listToEdit: null
+  listToEdit: null,
+  selectedList: null
 }
 
 // Helper functions
@@ -77,6 +78,13 @@ export const listReducer = (state = initialState, action: ListsAction): ListStat
         listToEdit: null
       }
     }
+    case actionTypes.SELECTED_LIST:
+      const selectedList = listsFromLS[action.payload]
+      return {
+        ...state,
+        selectedList
+      }
+
     default:
       return state
   }

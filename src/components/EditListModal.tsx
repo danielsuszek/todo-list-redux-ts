@@ -1,6 +1,6 @@
 import React, {FC, useState, FormEvent} from 'react';
 import { useDispatch} from 'react-redux';
-import { updateListAction } from '../store/actions';
+import { updateList } from '../store/actions';
 import { List } from "../store/type"
 
 interface EditListModalProps {
@@ -16,7 +16,7 @@ const EditListModal:FC<EditListModalProps> = ({listToEdit}) => {
   }
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    dispatch(updateListAction(listToEdit.id, listName))
+    dispatch(updateList(listToEdit.id, listName))
   }
   
   return (
