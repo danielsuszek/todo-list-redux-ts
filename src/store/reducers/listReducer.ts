@@ -67,6 +67,16 @@ export const listReducer = (state = initialState, action: ListsAction): ListStat
         listToEdit
       }
     }
+    case actionTypes.UPDATE_LIST: {
+      const listsFromLS3 = {...listsFromLS}
+      listsFromLS3[action.payload.id].name = action.payload.name
+      saveListsToLS(listsFromLS3)
+      return {
+        ...state,
+        lists: listsFromLS,
+        listToEdit: null
+      }
+    }
     default:
       return state
   }

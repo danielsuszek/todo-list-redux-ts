@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import './app.sass';
 import CreateNewList from './components/CreateNewList'
 import DeleteListModal from './components/DeleteListModal';
-import { EditListModal } from './components/EditListModal';
+import EditListModal from './components/EditListModal'
 import Header from './components/Header';
 import Lists from './components/Lists';
 import { RootState } from './store/store';
@@ -18,7 +18,7 @@ const App: FC = () => {
       <CreateNewList />
       <Lists />
       {listIdToDelete && <DeleteListModal listId={listIdToDelete} />}
-      {listToEdit && <EditListModal listToEdit={listToEdit}/>}
+      {listToEdit && <EditListModal listToEdit={listToEdit} />}
     </div>
   );
 }

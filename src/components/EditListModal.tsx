@@ -1,19 +1,37 @@
-import React, {FC} from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store/store';
+import React, {FC, useState, FormEvent} from 'react';
+import { useDispatch} from 'react-redux';
+import { updateListAction } from '../store/actions';
 import { List } from "../store/type"
 
-interface EditListToProps {
+interface EditListModalProps {
   listToEdit: List
 }
 
-export const EditListModal:FC<EditListToProps> = ({listToEdit}) => {
-  const list = useSelector((state: RootState) => state.list.listToEdit)
-  console.log(list);
+const EditListModal:FC<EditListModalProps> = ({listToEdit}) => {
+  const dispatch = useDispatch()
+  const  [listName, setListName] = useState(listToEdit.name)
+
+  const inputChangeHandler = (e: FormEvent<HTMLInputElement>) => {
+    setListName(e.currentTarget.value)
+  }
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    dispatch(updateListAction(listToEdit.id, listName))
+  }
   
-  return (    
+  return (
     <div>
-      EditListModal
+      <h2>Edit modal</h2>
+      <form onSubmit={submitHandler}>
+        <input 
+          type="text" 
+          onChange={inputChangeHandler} 
+          value={listName}
+        />
+        <button type="submit">Edytuj</button>
+      </form>
     </div>
-  )  
+  )
 }
+
+export default EditListModal

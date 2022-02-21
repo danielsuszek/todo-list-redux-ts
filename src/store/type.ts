@@ -48,7 +48,15 @@ interface SetListToEditAction {
   payload: ID
 }
 
-export type ListsAction = AddListAction | GetListsAction | SetListIdToDeleteAction | GetListByIdAction | DeleteListAction | SetListToEditAction
+interface UpdateList {
+  type: typeof listActionConstants.UPDATE_LIST,
+  payload: {
+    id: ID,
+    name: string
+  }
+}
+
+export type ListsAction = AddListAction | GetListsAction | SetListIdToDeleteAction | GetListByIdAction | DeleteListAction | SetListToEditAction | UpdateList
 
 // states
 export interface ListState {
