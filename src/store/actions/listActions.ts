@@ -54,6 +54,7 @@ export const updateList = (id: ID, name: string): ListsAction => {
 }
 
 export const setSelectedList = (id: ID): ListsAction => {
+  console.log('from action', id)
   return {
     type: listTypes.SELECTED_LIST,
     payload: id

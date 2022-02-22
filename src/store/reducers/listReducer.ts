@@ -43,7 +43,8 @@ export const listReducer = (state = initialState, action: ListsAction): ListStat
     case actionTypes.SET_LIST_ID_TO_DELETE:
       return {
         ...state,
-        listIdToDelete: action.payload
+        listIdToDelete: action.payload,
+        selectedList: null
       }
     case actionTypes.GET_LIST_BY_ID:
       const list = listsFromLS[action.payload]
@@ -59,7 +60,8 @@ export const listReducer = (state = initialState, action: ListsAction): ListStat
         ...state,
         lists: clonedListsFromLS2,
         listIdToDelete: '',
-        listById: null
+        listById: null,
+        
       }
     case actionTypes.SET_LIST_TO_EDIT: {
       const listToEdit = listsFromLS[action.payload]
@@ -75,11 +77,13 @@ export const listReducer = (state = initialState, action: ListsAction): ListStat
       return {
         ...state,
         lists: listsFromLS,
-        listToEdit: null
+        listToEdit: null,
+        selectedList: null
       }
     }
     case actionTypes.SELECTED_LIST:
       const selectedList = listsFromLS[action.payload]
+      console.log(selectedList)
       return {
         ...state,
         selectedList

@@ -20,6 +20,7 @@ const Lists: FC = () => {
   
   const selectListHandler = (id: ID) => {
     dispatch(setSelectedList(id))
+    console.log(id);
   }
   
   useEffect(() => {
@@ -37,13 +38,13 @@ const Lists: FC = () => {
                 className="lists__list"
                 onClick={() => selectListHandler(list.id)}
               >{list.name}
-                <span onClick={() => setListIdToDeleteHandler(list.id)}>
-                  <i title="Kasuj" className="fas fa-minus-circle"></i>
-                </span>
-                <span onClick={() => setListToEditHandler(list.id)}>
-                  <i title="Edytuj" className="fas fa-edit"></i>
-                </span>
               </p>
+              <span onClick={() => setListIdToDeleteHandler(list.id)}>
+                <i title="Kasuj" className="fas fa-minus-circle"></i>
+              </span>
+              <span onClick={() => setListToEditHandler(list.id)}>
+                <i title="Edytuj" className="fas fa-edit"></i>
+              </span>
             </div>
           })
         )
