@@ -11,6 +11,7 @@ export interface Task {
 export interface List {
   id: ID;
   name: string;
+  isSelected: boolean;
   tasks: Task[];
 }
 
@@ -48,7 +49,7 @@ interface SetListToEditAction {
   payload: ID
 }
 
-interface UpdateList {
+interface UpdateListAction {
   type: typeof listActionConstants.UPDATE_LIST,
   payload: {
     id: ID,
@@ -61,7 +62,7 @@ interface SetSelectedListAction {
   payload: ID
 }
 
-export type ListsAction = AddListAction | GetListsAction | SetListIdToDeleteAction | GetListByIdAction | DeleteListAction | SetListToEditAction | UpdateList | SetSelectedListAction
+export type ListsAction = AddListAction | GetListsAction | SetListIdToDeleteAction | GetListByIdAction | DeleteListAction | SetListToEditAction | UpdateListAction | SetSelectedListAction
 
 // states
 export interface ListState {

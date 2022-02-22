@@ -22,6 +22,7 @@ const CreateNewList: FC = () => {
     const newList: List = {
       id: `list-${new Date().getTime()}`,
       name: listName,
+      isSelected: false,
       tasks: []
     }
 
