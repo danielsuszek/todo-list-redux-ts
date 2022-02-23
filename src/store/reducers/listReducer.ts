@@ -83,7 +83,6 @@ export const listReducer = (state = initialState, action: ListsAction): ListStat
     }
     case actionTypes.SELECTED_LIST:
       const selectedList = listsFromLS[action.payload]
-      console.log(selectedList)
       return {
         ...state,
         selectedList

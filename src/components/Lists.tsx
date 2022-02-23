@@ -20,7 +20,6 @@ const Lists: FC = () => {
   
   const selectListHandler = (id: ID) => {
     dispatch(setSelectedList(id))
-    console.log(id);
   }
   
   useEffect(() => {
