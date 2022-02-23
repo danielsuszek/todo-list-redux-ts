@@ -1,6 +1,6 @@
 import * as listTypes from "../constants/listActionContstants"
 
-import { ID, List, ListsAction } from "../type"
+import { ID, List, ListsAction, Task } from "../type"
 
 export const addList = (list: List): ListsAction => {
   return {
@@ -57,5 +57,15 @@ export const setSelectedList = (id: ID): ListsAction => {
   return {
     type: listTypes.SELECTED_LIST,
     payload: id
+  }
+}
+
+export const addTask = (list: List, task: Task): ListsAction => {
+  return {
+    type: listTypes.ADD_TASK,
+    payload: {
+      list,
+      task
+    }
   }
 }

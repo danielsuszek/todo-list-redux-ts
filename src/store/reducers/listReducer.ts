@@ -87,6 +87,17 @@ export const listReducer = (state = initialState, action: ListsAction): ListStat
         ...state,
         selectedList
       }
+    
+    case actionTypes.ADD_TASK: {
+      const clonedListsToAddTask = {...listsFromLS}
+      clonedListsToAddTask[action.payload.list.id].tasks.push(action.payload.task)
+      saveListsToLS(clonedListsToAddTask)
+      
+      return {
+        ...state,
+        lists: clonedListsToAddTask
+      }
+    }
 
     default:
       return state

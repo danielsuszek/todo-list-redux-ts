@@ -62,7 +62,15 @@ interface SetSelectedListAction {
   payload: ID
 }
 
-export type ListsAction = AddListAction | GetListsAction | SetListIdToDeleteAction | GetListByIdAction | DeleteListAction | SetListToEditAction | UpdateListAction | SetSelectedListAction
+interface AddTaskAction {
+  type: typeof listActionConstants.ADD_TASK,
+  payload: {
+    list: List,
+    task: Task
+  }
+}
+
+export type ListsAction = AddListAction | GetListsAction | SetListIdToDeleteAction | GetListByIdAction | DeleteListAction | SetListToEditAction | UpdateListAction | SetSelectedListAction | AddTaskAction
 
 // states
 export interface ListState {
