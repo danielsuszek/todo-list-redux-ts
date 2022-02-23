@@ -1,10 +1,20 @@
 @import '../sass/main-import'
 
 .lists
-  &__list
-    cursor: pointer
-  span 
-    margin-left: 15px
-    color: #f00
-    cursor: pointer
-    font-size: 20px    
+  &__itemWrapper
+    display: flex
+    justify-content: center
+    align-items: center
+    .itemWrapper__item
+      // border: 1px dotted $gray
+      flex-basis: 80%      
+      p
+        cursor: pointer
+    .itemWrapper__buttons
+      // border: 1px dotted $gray
+      flex-basis: 20%
+    span 
+      margin-left: 15px
+      color: $danger
+      cursor: pointer
+      font-size: 20px    

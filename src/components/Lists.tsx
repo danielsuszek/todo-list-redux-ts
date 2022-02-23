@@ -33,19 +33,24 @@ const Lists: FC = () => {
         <p>Nie masz list</p> :
         (
           Object.values(lists).map((list: List) => {
-            return <div key={list.id}>
-              <p 
-                className="lists__list"
-                onClick={() => selectListHandler(list.id)}
-              >{list.name}
-              </p>
-              <span onClick={() => setListIdToDeleteHandler(list.id)}>
-                <i title="Kasuj" className="fas fa-minus-circle"></i>
-              </span>
-              <span onClick={() => setListToEditHandler(list.id)}>
-                <i title="Edytuj" className="fas fa-edit"></i>
-              </span>
-            </div>
+            return (
+              <div key={list.id} className="lists__itemWrapper">
+                <div className="itemWrapper__item">
+                  <p 
+                    onClick={() => selectListHandler(list.id)}
+                  >{list.name}
+                  </p>
+                </div>
+                <div className="itemWrapper__buttons">
+                  <span onClick={() => setListIdToDeleteHandler(list.id)}>
+                    <i title="Kasuj" className="fas fa-minus-circle"></i>
+                  </span>
+                  <span onClick={() => setListToEditHandler(list.id)}>
+                    <i title="Edytuj" className="fas fa-edit"></i>
+                  </span>
+                </div>
+              </div>
+            )
           })
         )
       }
