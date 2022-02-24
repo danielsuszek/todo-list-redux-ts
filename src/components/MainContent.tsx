@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../store/store'
 import AddTask from './AddTask'
 import './mainContent.sass'
+import Tasks from './Tasks'
 
 const MainContent: FC  = () => {
   const selectedList = useSelector((state: RootState) => state.list.selectedList)
@@ -16,6 +17,7 @@ const MainContent: FC  = () => {
             <Fragment>
               <h2>{selectedList?.name}</h2>
               <AddTask list={selectedList}/>
+              <Tasks tasks={selectedList.tasks}/>
             </Fragment>
           )
         }

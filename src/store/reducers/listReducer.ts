@@ -95,7 +95,8 @@ export const listReducer = (state = initialState, action: ListsAction): ListStat
       
       return {
         ...state,
-        lists: clonedListsToAddTask
+        lists: clonedListsToAddTask,
+        selectedList: clonedListsToAddTask[action.payload.list.id]
       }
     }
 
