@@ -16,7 +16,7 @@ const Tasks:FC<TasksProps> = ({tasks}) => {
               <ul>
                 {tasks.map((task) => {
                   return (
-                    <li>{task.name}</li>
+                    <li key={task.id}>{task.name}</li>
                   )
                 })}
               </ul>
