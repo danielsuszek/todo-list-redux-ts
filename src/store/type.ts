@@ -70,7 +70,15 @@ interface AddTaskAction {
   }
 }
 
-export type ListsAction = AddListAction | GetListsAction | SetListIdToDeleteAction | GetListByIdAction | DeleteListAction | SetListToEditAction | UpdateListAction | SetSelectedListAction | AddTaskAction
+interface SetTaskToDeleteAction {
+  type: typeof listActionConstants.SET_TASK_TO_DELETE,
+  payload: {
+    list: List,
+    task: Task
+  }
+}
+
+export type ListsAction = AddListAction | GetListsAction | SetListIdToDeleteAction | GetListByIdAction | DeleteListAction | SetListToEditAction | UpdateListAction | SetSelectedListAction | AddTaskAction | SetTaskToDeleteAction
 
 // states
 export interface ListState {
@@ -78,7 +86,11 @@ export interface ListState {
   listIdToDelete: ID,
   listById: List | null,
   listToEdit: List | null,
-  selectedList: List | null
+  selectedList: List | null,
+  taskToDelete: {
+    list: List,
+    task: Task
+  } | null
 }
 
 

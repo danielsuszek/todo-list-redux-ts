@@ -69,3 +69,13 @@ export const addTask = (list: List, task: Task): ListsAction => {
     }
   }
 }
+
+export const setTaskToDelete = (list: List, task: Task): ListsAction => {
+  return {
+    type: listTypes.SET_TASK_TO_DELETE,
+    payload: {
+      list,
+      task
+    }
+  }
+}
