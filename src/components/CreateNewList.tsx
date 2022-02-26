@@ -1,3 +1,5 @@
+import './createNewList.sass'
+
 import React , { FC, useState, FormEvent } from 'react'
 import { useDispatch } from 'react-redux'
 
@@ -31,8 +33,12 @@ const CreateNewList: FC = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={submitHandler}>
+    <div className="addListForm">
+      <h2>Dodaj listę</h2>
+      <form
+        className="addListForm__form"
+        onSubmit={submitHandler}
+      >
         <input
           value={listName}
           onChange={inputChangeHandler}

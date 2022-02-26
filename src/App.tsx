@@ -14,19 +14,21 @@ const App: FC = () => {
   const listIdToDelete = useSelector((state: RootState) => state.list.listIdToDelete)
   const listToEdit = useSelector((state: RootState) => state.list.listToEdit)
   const taskToDelete = useSelector((state: RootState) => state.list.taskToDelete)
- console.log(taskToDelete);
+//  console.log(taskToDelete);
   return (
     <div className="App">
-      <Header />
-      <div className="container">
-        <Navbar />
-        <MainContent />
-      </div>
+      <div className="App__appWrapper">
+        <Header />
+        <div className="App__appWrapper__container">
+          <Navbar />
+          <MainContent />
+        </div>
 
-      {listIdToDelete && <DeleteListModal listId={listIdToDelete} />}
-      {listToEdit && <EditListModal listToEdit={listToEdit} />}
-      {/* {taskToDelete && <DeleteTaskModal taskToDelete={taskToDelete}/>} */}
-      {taskToDelete && <DeleteTaskModal taskToDelete={taskToDelete}/>}
+        {listIdToDelete && <DeleteListModal listId={listIdToDelete} />}
+        {listToEdit && <EditListModal listToEdit={listToEdit} />}
+        {/* {taskToDelete && <DeleteTaskModal taskToDelete={taskToDelete}/>} */}
+        {taskToDelete && <DeleteTaskModal taskToDelete={taskToDelete}/>}
+      </div>
     </div>
   );
 }

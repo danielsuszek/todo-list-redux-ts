@@ -27,7 +27,7 @@ const Lists: FC = () => {
   }, [dispatch])
   return (
     <div className="lists">
-      Lists
+      <h2>Twoje listy:</h2>
       {(Object.keys(lists).length === 0) ?
         <p>Nie masz list</p> :
         (
