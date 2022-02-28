@@ -26,12 +26,30 @@ const DeleteListModal: FC<DeleteListModalProps> = ({listId}) => {
     dispatch(getListById(listId))
   }, [dispatch, listId])
   return (
-    <div className="deleteListModal" onClick={ hideModalHandler }>
-      <h2>Delete List Modal</h2>
-      <p>listId {listId}</p>
-      <p>{listById?.name}</p>
-      <button onClick={ deleteListHandler }>Kasuj</button>
-      <button onClick={ hideModalHandler }>Anuluj</button>
+    <div className="deleteListModal" >
+      <form className="deleteListModal__wrapper">
+        <div className="deleteListModal__wrapper__header">
+          <h2>Delete List Modal</h2>
+          <i className="fa fa-times" onClick={ hideModalHandler }></i>
+        </div>
+        <hr />
+        <div className="deleteListModal__wrapper__content">
+          <p>Na pewno chcesz skasować listę</p>
+          <p className="listToDelete">{listById?.name}
+          &nbsp;<span className="listToDelete__qmark">?</span></p>
+        </div>
+        <hr />
+        <div className="deleteListModal__wrapper__footer">
+          <button 
+            onClick={ deleteListHandler }
+            className="modalConfirm"
+          >Kasuj</button>
+          <button 
+            onClick={ hideModalHandler }
+            className="modalCancel"
+          >Anuluj</button>
+        </div>
+      </form>
     </div>
   )
 }

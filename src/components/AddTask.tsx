@@ -1,3 +1,5 @@
+import './addTask.sass'
+
 import { FC, FormEvent, useState } from "react"
 import { useDispatch } from "react-redux";
 import { addTask } from "../store/actions";
