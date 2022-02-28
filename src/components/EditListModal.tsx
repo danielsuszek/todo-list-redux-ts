@@ -1,3 +1,5 @@
+import "./editListModal.sass"
+
 import React, {FC, useState, FormEvent} from 'react';
 import { useDispatch} from 'react-redux';
 import { setListToEdit, updateList } from '../store/actions';
@@ -26,16 +28,39 @@ const EditListModal:FC<EditListModalProps> = ({listToEdit}) => {
   }
   
   return (
-    <div>
-      <h2>Edit modal</h2>
-      <form onSubmit={submitHandler}>
-        <input 
-          type="text" 
-          onChange={inputChangeHandler} 
-          value={listName}
-        />
-        <button type="submit">Edytuj</button>
-        <button type="button" className="button" onClick={hideModalHandler}>Cancel</button>
+    <div className="editListModal">
+      <form 
+        className="editListModal__wrapper"
+        onSubmit={submitHandler}
+      >
+        <div className="editListModal__wrapper__header">
+          <h2>Edytuj nazwę listy</h2>
+          <i className="fa fa-times" onClick={ hideModalHandler }></i>
+        </div>
+        <hr />
+        <div className="editListModal__wrapper__content">
+          <label htmlFor="listName">Nazwa listy</label>
+          <br />
+          <input 
+            className="inputListName"
+            type="text" 
+            name="listName"
+            onChange={inputChangeHandler} 
+            value={listName}
+          />
+        </div>
+        <hr />
+        <div className="editListModal__wrapper__footer">
+          <button
+           type="submit"
+           className="modalConfirm"
+          >Edytuj</button>
+          <button 
+            type="button" 
+            className="modalCancel" 
+            onClick={hideModalHandler}
+          >Anuluj</button>
+        </div>
       </form>
     </div>
   )

@@ -1,0 +1,27 @@
+@import '../sass/main-import'
+
+.editListModal
+  @include modal()  
+  &__wrapper
+    @include modalWrapper(500px, 300px, $main-bg)
+    &__header
+      @include modalHeader(50px, $danger)    
+    &__content
+      @include modalContent()
+      input.inputListName
+        width: 100%
+        margin-top: 10px
+        padding: 5px
+        font-size: 18px
+      // .listToDelete
+      //   color: $danger
+      //   &__qmark
+      //     color: $gray
+    &__footer
+      @include modalFooter(50px)
+      button
+        color: $gray
+      button.modalConfirm
+        background-color: $danger
+      button.modalCancel
+        background-color: $forestgreen    

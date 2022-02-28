@@ -27,7 +27,7 @@ const DeleteListModal: FC<DeleteListModalProps> = ({listId}) => {
   }, [dispatch, listId])
   return (
     <div className="deleteListModal" >
-      <form className="deleteListModal__wrapper">
+      <div className="deleteListModal__wrapper">
         <div className="deleteListModal__wrapper__header">
           <h2>Delete List Modal</h2>
           <i className="fa fa-times" onClick={ hideModalHandler }></i>
@@ -49,7 +49,7 @@ const DeleteListModal: FC<DeleteListModalProps> = ({listId}) => {
             className="modalCancel"
           >Anuluj</button>
         </div>
-      </form>
+      </div>
     </div>
   )
 }
