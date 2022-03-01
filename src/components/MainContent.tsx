@@ -10,15 +10,15 @@ const MainContent: FC  = () => {
     
   return (
     <div className="mainContent">
-      <div className="mainContent__tasks">
+      <div className="mainContent__wrapper">
         {(!selectedList) ? 
           <h2>Wybierz listę by dodać zadania</h2> : 
           (
-            <Fragment>
-              <h2>{selectedList?.name}</h2>
+            <div className="tasksWrapper">
+              <h2 className="tasksWrapper__selectedList">{selectedList?.name}</h2>
               <AddTask list={selectedList}/>
               <Tasks tasks={selectedList.tasks}/>
-            </Fragment>
+            </div>
           )
         }
 

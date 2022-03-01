@@ -30,14 +30,22 @@ const AddTask: FC<AddTaskProps> = ({list}) => {
   }
   
   return (
-    <form onSubmit={addTaskHandler}>
-      <input 
-        type="text"
-        onChange={inputChangeHandler}
-        value={taskContent}
-      />
-      <button type="submit">Dodaj zadanie</button>
-    </form>
+    <div className="addTask">
+      <form 
+        className="addTask__form"
+        onSubmit={addTaskHandler}>
+        <input 
+          className="addTask__form__taskInput"
+          type="text"
+          onChange={inputChangeHandler}
+          value={taskContent}
+        />
+        <button 
+          className="addTask__form__submitBtn"
+          type="submit"
+        >Dodaj zadanie</button>
+      </form>
+    </div>
   )
 }
 

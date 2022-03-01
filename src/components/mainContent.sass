@@ -1,7 +1,14 @@
 @import "../sass/main-import"
 
 .mainContent
-  border: 1px dotted $gray
   flex-basis: 80%
-  &__tasks
+  &__wrapper
+    border: 1px dotted $gray
+    height: 100%
     padding: 20px
+    .tasksWrapper
+      border: 1px dotted $gray
+      display: flex
+      flex-direction: column
+      &__selectedList
+        padding: 12px
