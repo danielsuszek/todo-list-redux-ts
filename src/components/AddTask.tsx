@@ -26,6 +26,7 @@ const AddTask: FC<AddTaskProps> = ({list}) => {
     }
   
     dispatch(addTask(list, Task))
+    setTaskContent("")
   }
   
   return (
