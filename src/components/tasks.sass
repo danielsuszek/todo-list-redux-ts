@@ -1,7 +1,17 @@
 @import '../sass/main-import'
 
 .tasks
-  i
-    margin-left: 10px
-    color: $danger
-    cursor: pointer
+  &__wrapper
+  .task
+    display: flex
+    align-items: center
+    &__name
+      width: 50%
+      border-bottom: 1px solid $gray
+      padding: 4px 10px
+    &__manage
+      i
+        padding: 8px 
+        color: $danger
+        cursor: pointer
+        border-bottom: 1px solid $gray

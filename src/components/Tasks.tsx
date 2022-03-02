@@ -20,27 +20,38 @@ const Tasks:FC<TasksProps> = ({tasks}) => {
   }
   
   return (
-    <div>
-      <div>
+      <div className="tasks">
         {
           (tasks.length === 0) ?
             <p>Brak zadań</p> : 
             (
-              <div>
+              <div className="tasks__wrapper">
                 {tasks.map((task) => {
                   return (
-                    <p key={task.id} className="tasks">
-                      {task.name}
-                      <span onClick={() => handleDeleteTask(task)}><i title="Kasuj" className="fas fa-minus-circle"></i></span>
-                    </p>
+                    <div key={task.id} className="task">
+                      <div className="task__name">
+                        {task.name}
+                      </div>
+                      <div 
+                        className="task__manage"
+                      >
+                        <i 
+                          className="fas fa-minus-circle"
+                          title="Kasuj" 
+                          onClick={() => handleDeleteTask(task)}
+                        ></i>
+                        <i 
+                          className="fas fa-edit" 
+                          title="Edytuj" 
+                        ></i>
+                      </div>
+                    </div>
                   )
                 })}
               </div>
             )
         }
       </div>
-
-    </div>
   )
 }
 
