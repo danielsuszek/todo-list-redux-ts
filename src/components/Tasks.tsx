@@ -31,7 +31,8 @@ const Tasks:FC<TasksProps> = ({tasks}) => {
                 {tasks.map((task: Task) => {
                   return (
                     <div key={task.id} className="task">
-                      <div className="task__name">
+                      <div 
+                        className={`task__name ${(task.completed) ? 'taskCompleted': ''}`}>
                         {task.name}
                       </div>
                       <div 

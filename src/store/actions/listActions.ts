@@ -90,7 +90,7 @@ export const setTaskToEdit = (list: List, task: Task): ListsAction => {
   }
 }
 
-export const UpdateTask = (list: List, taskId: ID, taskContent: string, taskCompleted: boolean): ListsAction => {
+export const editTask = (list: List, taskId: ID, taskContent: string, taskCompleted: boolean): ListsAction => {
   return {
     type: listTypes.EDIT_TASK,
     payload: {

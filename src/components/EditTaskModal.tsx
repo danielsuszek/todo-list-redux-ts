@@ -1,8 +1,9 @@
 import './editTaskModal.sass'
 
-import { FC, useState } from "react"
+import { FC, FormEvent, useState } from "react"
 import { useDispatch } from "react-redux"
 import { List, Task } from "../store/type"
+import { editTask } from '../store/actions'
 
 interface EditTaskModalProps {
   taskToEdit: {
@@ -11,11 +12,31 @@ interface EditTaskModalProps {
   }
 }
 const EditTaskModal: FC<EditTaskModalProps> = ({taskToEdit:{list, task}}) => {
-   
+  const dispatch = useDispatch()
+  const [taskName, setTaskName] = useState(task.name)
+  const [taskCompleted, setTaskCompleted] = useState(task.completed)
+  
+  const taskNameHandler = (e: FormEvent<HTMLInputElement>) => {
+    setTaskName(e.currentTarget.value)
+  }
+  const taskCompletedHandler = (e: FormEvent<HTMLInputElement>) => {
+    setTaskCompleted(e.currentTarget.checked)
+  }
+
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    if (taskName.trim() === '')
+      return alert('Zadanie nie może być puste')
+
+    dispatch(editTask(list, task.id, taskName, taskCompleted))
+  }
+
   return (
     <div className="editTaskModal">
       <form 
         className="editTaskModal__wrapper"
+        onSubmit={submitHandler}
       >
         <div className="editTaskModal__wrapper__header">
           <h2>Edytuj nazwę zadania</h2>
@@ -26,18 +47,33 @@ const EditTaskModal: FC<EditTaskModalProps> = ({taskToEdit:{list, task}}) => {
           <div className="editTaskFields">
             <div className="fieldInput">
               <label>Edytuj zadanie</label>
-              <input className="inputTaskName"type="text" />
+              <input 
+                className="inputTaskName"
+                type="text" 
+                onChange={taskNameHandler}
+                value={taskName}
+              />
             </div>
             <div className="fieldCheckbox">
               <label>Zadanie wykonane</label>
-              <input type="checkbox" />
+              <input 
+                type="checkbox" 
+                onChange={taskCompletedHandler}
+                checked={taskCompleted}
+
+              />
             </div>
           </div>
         </div>
         <hr />
         <div className="editTaskModal__wrapper__footer">
-          <button className="modalConfirm">Edytuj</button>
-          <button className="modalCancel">Anuluj</button>
+          <button 
+            className="modalConfirm"
+
+          >Edytuj</button>
+          <button 
+            className="modalCancel"
+          >Anuluj</button>
         </div>
       </form>
     </div>

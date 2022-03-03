@@ -123,7 +123,7 @@ export const listReducer = (state = initialState, action: ListsAction): ListStat
     case actionTypes.EDIT_TASK: {
       const clonedAllListsToEditTask = {...listsFromLS}
       const clonedListToEditTask = {...clonedAllListsToEditTask[action.payload.list.id]}
-      const clonedAllTasksToEdit = {...clonedListToEditTask.tasks}
+      const clonedAllTasksToEdit = [...clonedListToEditTask.tasks]
       
       const findTaskToEdit = clonedAllTasksToEdit.find(task => task.id === action.payload.taskId)
       const taskToEdit = {...findTaskToEdit!}
