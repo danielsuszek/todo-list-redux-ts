@@ -142,6 +142,12 @@ export const listReducer = (state = initialState, action: ListsAction): ListStat
         taskToEdit: null
       }
     }
+    case actionTypes.UNSET_TASK_TO_EDIT: {
+      return {
+        ...state,
+        taskToEdit: null
+      }
+    }
     default:
       return state
   }

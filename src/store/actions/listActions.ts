@@ -101,3 +101,9 @@ export const editTask = (list: List, taskId: ID, taskContent: string, taskComple
     }
   }
 }
+
+export const unsetTaskToEditAction = (): ListsAction => {
+  return {
+    type: listTypes.UNSET_TASK_TO_EDIT
+  }
+}

@@ -3,7 +3,7 @@ import './editTaskModal.sass'
 import { FC, FormEvent, useState } from "react"
 import { useDispatch } from "react-redux"
 import { List, Task } from "../store/type"
-import { editTask } from '../store/actions'
+import { editTask, unsetTaskToEditAction } from '../store/actions'
 
 interface EditTaskModalProps {
   taskToEdit: {
@@ -22,7 +22,10 @@ const EditTaskModal: FC<EditTaskModalProps> = ({taskToEdit:{list, task}}) => {
   const taskCompletedHandler = (e: FormEvent<HTMLInputElement>) => {
     setTaskCompleted(e.currentTarget.checked)
   }
-
+  const handleCancelEditTask = () => {
+    dispatch(unsetTaskToEditAction())
+  }
+  
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
@@ -40,7 +43,7 @@ const EditTaskModal: FC<EditTaskModalProps> = ({taskToEdit:{list, task}}) => {
       >
         <div className="editTaskModal__wrapper__header">
           <h2>Edytuj nazwę zadania</h2>
-          <i className="fa fa-times"></i>
+          <i className="fa fa-times" onClick={handleCancelEditTask}></i>
         </div>
         <hr />
         <div className="editTaskModal__wrapper__content">
@@ -60,7 +63,6 @@ const EditTaskModal: FC<EditTaskModalProps> = ({taskToEdit:{list, task}}) => {
                 type="checkbox" 
                 onChange={taskCompletedHandler}
                 checked={taskCompleted}
-
               />
             </div>
           </div>
@@ -73,6 +75,7 @@ const EditTaskModal: FC<EditTaskModalProps> = ({taskToEdit:{list, task}}) => {
           >Edytuj</button>
           <button 
             className="modalCancel"
+            onClick={handleCancelEditTask}
           >Anuluj</button>
         </div>
       </form>
