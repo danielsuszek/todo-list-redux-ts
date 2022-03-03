@@ -13,6 +13,7 @@ const DeleteTaskModal: FC<DeleteTaskProps> = ({taskToDelete: {list, task}}) => {
   return (
     <div>
       DeleteTaskModal 
+      {/* {console.log(list)} */}
     </div>
   )
 }

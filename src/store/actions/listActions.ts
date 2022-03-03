@@ -79,3 +79,25 @@ export const setTaskToDelete = (list: List, task: Task): ListsAction => {
     }
   }
 }
+
+export const setTaskToEdit = (list: List, task: Task): ListsAction => {
+  return {
+    type: listTypes.SET_TASK_TO_EDIT,
+    payload: {
+      list,
+      task
+    }
+  }
+}
+
+export const UpdateTask = (list: List, taskId: ID, taskContent: string, taskCompleted: boolean): ListsAction => {
+  return {
+    type: listTypes.EDIT_TASK,
+    payload: {
+      list,
+      taskId,
+      taskContent,
+      taskCompleted
+    }
+  }
+}

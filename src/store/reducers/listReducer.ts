@@ -8,7 +8,8 @@ const initialState: ListState = {
   listById: null,
   listToEdit: null,
   selectedList: null,
-  taskToDelete: null
+  taskToDelete: null,
+  taskToEdit: null
 }
 
 // Helper functions
@@ -108,6 +109,37 @@ export const listReducer = (state = initialState, action: ListsAction): ListStat
           list: action.payload.list,
           task: action.payload.task
         }
+      }
+    }
+    case actionTypes.SET_TASK_TO_EDIT: {
+      return {
+        ...state,
+        taskToEdit: {
+          list: action.payload.list,
+          task: action.payload.task
+        }
+      }
+    }
+    case actionTypes.EDIT_TASK: {
+      const clonedAllListsToEditTask = {...listsFromLS}
+      const clonedListToEditTask = {...clonedAllListsToEditTask[action.payload.list.id]}
+      const clonedAllTasksToEdit = {...clonedListToEditTask.tasks}
+      
+      const findTaskToEdit = clonedAllTasksToEdit.find(task => task.id === action.payload.taskId)
+      const taskToEdit = {...findTaskToEdit!}
+      taskToEdit.name = action.payload.taskContent
+      taskToEdit.completed = action.payload.taskCompleted
+      
+      const updatedTasks = clonedAllTasksToEdit.map(task => (task.id === taskToEdit.id) ? taskToEdit : task)
+      clonedListToEditTask.tasks = updatedTasks
+      clonedAllListsToEditTask[clonedListToEditTask.id] = clonedListToEditTask
+      saveListsToLS(clonedAllListsToEditTask)
+            
+      return {
+        ...state,
+        lists: clonedAllListsToEditTask,
+        selectedList: clonedListToEditTask,
+        taskToEdit: null
       }
     }
     default:

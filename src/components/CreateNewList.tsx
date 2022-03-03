@@ -18,7 +18,7 @@ const CreateNewList: FC = () => {
     e.preventDefault();
 
     if(listName.trim() === '') {
-      return alert('List name is required!');
+      return alert('Nazwa listy jest wymagana');
     }
 
     const newList: List = {

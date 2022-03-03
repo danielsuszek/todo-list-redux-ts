@@ -19,6 +19,11 @@ const AddTask: FC<AddTaskProps> = ({list}) => {
   }
   const addTaskHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    if(taskContent.trim() === '') {
+      return alert('Nazwa zadania jest wymagana');
+    }
+    
     const Task: Task  = {
       id: `task-${new Date().getTime()}`,
       name: taskContent,

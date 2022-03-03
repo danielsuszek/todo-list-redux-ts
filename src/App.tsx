@@ -4,6 +4,7 @@ import './app.sass';
 import DeleteListModal from './components/DeleteListModal';
 import DeleteTaskModal from './components/DeleteTaskModal';
 import EditListModal from './components/EditListModal'
+import EditTaskModal from './components/EditTaskModal';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Navbar from './components/Navbar';
@@ -14,7 +15,8 @@ const App: FC = () => {
   const listIdToDelete = useSelector((state: RootState) => state.list.listIdToDelete)
   const listToEdit = useSelector((state: RootState) => state.list.listToEdit)
   const taskToDelete = useSelector((state: RootState) => state.list.taskToDelete)
-//  console.log(taskToDelete);
+  const taskToEdit = useSelector((state: RootState) => state.list.taskToEdit)
+  
   return (
     <div className="App">
       <div className="App__appWrapper">
@@ -26,8 +28,8 @@ const App: FC = () => {
 
         {listIdToDelete && <DeleteListModal listId={listIdToDelete} />}
         {listToEdit && <EditListModal listToEdit={listToEdit} />}
-        {/* {taskToDelete && <DeleteTaskModal taskToDelete={taskToDelete}/>} */}
         {taskToDelete && <DeleteTaskModal taskToDelete={taskToDelete}/>}
+        {taskToEdit && <EditTaskModal taskToEdit={taskToEdit} />}
       </div>
     </div>
   );

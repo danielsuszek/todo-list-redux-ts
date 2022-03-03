@@ -1,9 +1,8 @@
 import { FC } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { setTaskToDelete } from "../store/actions"
+import { setTaskToDelete, setTaskToEdit } from "../store/actions"
 import { RootState } from "../store/store"
 import { Task } from "../store/type"
-import DeleteTaskModal from "./DeleteTaskModal"
 import './tasks.sass'
 
 interface TasksProps {
@@ -15,10 +14,13 @@ const Tasks:FC<TasksProps> = ({tasks}) => {
   const list = useSelector((state: RootState) => state.list.selectedList!)
   
   const handleDeleteTask = (task: Task) => {
-    console.log(task);
+    // console.log(task);
     dispatch(setTaskToDelete(list, task))
   }
-  
+  const handleEditTask = (task: Task) => {
+    dispatch(setTaskToEdit(list, task))
+  }
+
   return (
       <div className="tasks">
         {
@@ -26,7 +28,7 @@ const Tasks:FC<TasksProps> = ({tasks}) => {
             <p>Brak zadań</p> : 
             (
               <div className="tasks__wrapper">
-                {tasks.map((task) => {
+                {tasks.map((task: Task) => {
                   return (
                     <div key={task.id} className="task">
                       <div className="task__name">
@@ -43,6 +45,7 @@ const Tasks:FC<TasksProps> = ({tasks}) => {
                         <i 
                           className="fas fa-edit" 
                           title="Edytuj" 
+                          onClick = {() => handleEditTask(task)}
                         ></i>
                       </div>
                     </div>
