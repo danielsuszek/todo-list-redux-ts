@@ -78,6 +78,18 @@ interface SetTaskToDeleteAction {
   }
 }
 
+interface DeleteTaskAction {
+  type: typeof listActionConstants.DELETE_TASK;
+  payload: {
+    list: List;
+    task: Task;
+  }
+}
+
+interface UnsetTaskToDelete {
+  type: typeof listActionConstants.UNSET_TASK_TO_DELETE;
+}
+
 interface SetTaskToEditAction {
   type: typeof listActionConstants.SET_TASK_TO_EDIT
   payload: {
@@ -100,7 +112,7 @@ interface UnsetTaskToEditAction {
   type: typeof listActionConstants.UNSET_TASK_TO_EDIT
 }
 
-export type ListsAction = AddListAction | GetListsAction | SetListIdToDeleteAction | GetListByIdAction | DeleteListAction | SetListToEditAction | UpdateListAction | SetSelectedListAction | AddTaskAction | SetTaskToDeleteAction | SetTaskToEditAction | EditTaskAction | UnsetTaskToEditAction
+export type ListsAction = AddListAction | GetListsAction | SetListIdToDeleteAction | GetListByIdAction | DeleteListAction | SetListToEditAction | UpdateListAction | SetSelectedListAction | AddTaskAction | SetTaskToDeleteAction | SetTaskToEditAction | EditTaskAction | UnsetTaskToEditAction | DeleteTaskAction | UnsetTaskToDelete
 
 // states
 export interface ListState {
@@ -118,5 +130,3 @@ export interface ListState {
     task: Task
   } | null
 }
-
-

@@ -111,6 +111,28 @@ export const listReducer = (state = initialState, action: ListsAction): ListStat
         }
       }
     }
+    case actionTypes.DELETE_TASK: {
+      const allListsToTaskDelete = {...listsFromLS}
+      const allTasksToTaskDelete = [...allListsToTaskDelete[state.taskToDelete!.list.id].tasks];
+      const taskToDelete = allTasksToTaskDelete.find(task => task.id === state.taskToDelete!.task.id)
+
+      allTasksToTaskDelete.splice(allTasksToTaskDelete.indexOf(taskToDelete!), 1)
+      allListsToTaskDelete[state.taskToDelete!.list.id].tasks = allTasksToTaskDelete
+      saveListsToLS(allListsToTaskDelete)
+      
+      return {
+        ...state,
+        lists: allListsToTaskDelete,
+        selectedList: allListsToTaskDelete[state.taskToDelete!.list.id],
+        taskToDelete: null
+      }
+    }
+    case actionTypes.UNSET_TASK_TO_DELETE: {
+      return {
+        ...state,
+        taskToDelete: null
+      }
+    }
     case actionTypes.SET_TASK_TO_EDIT: {
       return {
         ...state,

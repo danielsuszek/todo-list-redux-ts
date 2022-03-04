@@ -80,6 +80,22 @@ export const setTaskToDelete = (list: List, task: Task): ListsAction => {
   }
 }
 
+export const deleteTask = (list: List, task: Task): ListsAction => {
+  return {
+    type: listTypes.DELETE_TASK,
+    payload: {
+      list,
+      task
+    }
+  }
+}
+
+export const unsetTaskToDelete = (): ListsAction => {
+  return {
+    type: listTypes.UNSET_TASK_TO_DELETE
+  }
+}
+
 export const setTaskToEdit = (list: List, task: Task): ListsAction => {
   return {
     type: listTypes.SET_TASK_TO_EDIT,

@@ -1,0 +1,22 @@
+@import '../sass/main-import'
+
+.deleteTaskModal
+  @include modal()  
+  &__wrapper
+    @include modalWrapper(500px, 300px, $main-bg)
+    &__header
+      @include modalHeader(50px, $danger)    
+    &__content
+      @include modalContent()
+      .taskToDelete
+        color: $danger
+        &__qmark
+          color: $gray
+    &__footer
+      @include modalFooter(50px)
+      button
+        color: $gray
+      button.modalConfirm
+        background-color: $danger
+      button.modalCancel
+        background-color: $forestgreen

@@ -29,7 +29,7 @@ const DeleteListModal: FC<DeleteListModalProps> = ({listId}) => {
     <div className="deleteListModal" >
       <div className="deleteListModal__wrapper">
         <div className="deleteListModal__wrapper__header">
-          <h2>Delete List Modal</h2>
+          <h2>Usuwanie listy</h2>
           <i className="fa fa-times" onClick={ hideModalHandler }></i>
         </div>
         <hr />
