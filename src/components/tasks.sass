@@ -1,12 +1,12 @@
 @import '../sass/main-import'
 
 .tasks
-  &__wrapper
+  &__wrapper    
   .task
     display: flex
     align-items: center
     &__name
-      width: 50%
+      flex-basis: 80%
       border-bottom: 1px solid $gray
       padding: 4px 10px
     &__manage
@@ -17,3 +17,10 @@
         border-bottom: 1px solid $gray
 .taskCompleted
   text-decoration: line-through
+
+@media only screen and (max-width: 992px) 
+  .tasks
+    &__wrapper
+    .task
+      &__name
+        flex-basis: 85%
