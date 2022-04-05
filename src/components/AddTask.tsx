@@ -37,7 +37,7 @@ const AddTask: FC<AddTaskProps> = ({list}) => {
   
   useEffect(() => {
     window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" })
-    inputTaskRef.current.focus()
+    // inputTaskRef.current.focus()
   },[list])
   
   return (
