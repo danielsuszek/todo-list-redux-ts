@@ -1,6 +1,6 @@
 import './addTask.sass'
 
-import { FC, FormEvent, useState } from "react"
+import { FC, FormEvent, useEffect, useRef, useState } from "react"
 import { useDispatch } from "react-redux";
 import { addTask } from "../store/actions";
 import { List, Task } from "../store/type"
@@ -11,6 +11,7 @@ interface AddTaskProps {
 
 const AddTask: FC<AddTaskProps> = ({list}) => {
   const dispatch = useDispatch()
+  const inputTaskRef = useRef<HTMLInputElement>(null!)
   
   const [taskContent, setTaskContent] = useState('')
   
@@ -34,6 +35,10 @@ const AddTask: FC<AddTaskProps> = ({list}) => {
     setTaskContent("")
   }
   
+  useEffect(() => {
+    inputTaskRef.current.focus()
+  },[list])
+  
   return (
     <div className="addTask">
       <form 
@@ -44,6 +49,7 @@ const AddTask: FC<AddTaskProps> = ({list}) => {
           type="text"
           onChange={inputChangeHandler}
           value={taskContent}
+          ref={inputTaskRef}
         />
         <button 
           className="addTask__form__submitBtn"
